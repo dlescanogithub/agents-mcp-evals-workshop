@@ -6,7 +6,7 @@ Offline workshop on agents, a tiny MCP teaching server, and eval gates. What is 
 
 Delivery teams can demo an agent that calls tools and still have no check that a write happened, that a note was treated as data, or that a run stayed inside a budget. This repo is a 2×3 hour enablement session (time boxes are [EST]) that practices those checks with a fake model. Nothing here is a production deployment, and no real client is connected.
 
-Measured result: on 2026-10-17 the offline gate passed **6 of 6** golden cases (package 0.1.0, Python 3.12.3, command `PYTHONPATH=src python -m workshop eval`). The same day, `PYTHONPATH=src python -m pytest` reported **34 passed** and **92.25%** coverage of `src/workshop`.
+Measured result: on 2026-10-17 the offline gate passed **6 of 6** golden cases (package 0.1.0, Python 3.12.3, git commit `631012d`, command `PYTHONPATH=src python -m workshop eval`). The same day, `PYTHONPATH=src python -m pytest` reported **34 passed** and **92.25%** coverage of `src/workshop`. A later commit that only records this hash does not change the runtime.
 
 ## Demo
 
@@ -43,7 +43,7 @@ The capstone calls the same depot handlers the teaching server calls. It does no
 
 ## Results
 
-Measured 2026-10-17, package 0.1.0, Python 3.12.3. Costs below are simulated (see `SIMULATED_USD_PER_TOKEN` in `src/workshop/budget.py`). They are not invoices.
+Measured 2026-10-17, package 0.1.0, Python 3.12.3, git commit `631012d`. Costs below are simulated (see `SIMULATED_USD_PER_TOKEN` in `src/workshop/budget.py`). They are not invoices.
 
 | Check | Result | Command |
 | --- | --- | --- |

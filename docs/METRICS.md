@@ -1,6 +1,6 @@
 # Metrics
 
-## Measured in this repo (2026-10-17, package 0.1.0, Python 3.12.3)
+## Measured in this repo (2026-10-17, package 0.1.0, Python 3.12.3, git commit `631012d`)
 
 | Metric | Value | Command |
 | --- | --- | --- |
