@@ -6,7 +6,7 @@ The token price in code is simulated. It was chosen on 2026-10-17 so that class 
 
 `SIMULATED_USD_PER_TOKEN = 0.000002` in `src/workshop/budget.py`.
 
-A scripted turn in the golden cassette uses 12 input tokens and 8 output tokens, so one accepted turn costs `20 * 0.000002 = 0.00004` simulated USD. The demo takes 3 turns: **0.00012000** simulated USD, printed by `python -m workshop demo` on 2026-10-17.
+A scripted turn in the golden cassette uses 12 input tokens and 8 output tokens, so one accepted turn costs `20 * 0.000002 = 0.00004` simulated USD. The demo takes 3 turns: **0.00012000** simulated USD, printed by `PYTHONPATH=src python -m workshop demo` on 2026-10-17 at package 0.1.0, Python 3.12.3, git commit `631012d`.
 
 The gate's six cases printed these simulated costs the same day:
 
