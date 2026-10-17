@@ -1,0 +1,42 @@
+name: ci
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  workshop:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+      - name: install
+        run: python -m pip install -e ".[dev]"
+      - name: lint
+        run: |
+          python -m ruff check src tests exercises solutions
+          python -m ruff format --check src tests exercises solutions
+      - name: types
+        run: python -m mypy
+      - name: tests
+        run: python -m pytest
+      - name: eval gate
+        run: python -m workshop eval
+      - name: secret scan
+        run: python -m workshop secretscan .
+      - name: forced regression must go red
+        run: |
+          set +e
+          python -m workshop eval-regression
+          status=$?
+          set -e
+          if [ "$status" -ne 1 ]; then
+            echo "expected exit 1 because the gate should go red, got ${status}"
+            exit 1
+          fi
+          echo "eval gate went red as required"
