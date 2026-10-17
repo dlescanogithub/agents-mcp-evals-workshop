@@ -1,0 +1,37 @@
+{
+  "note": "simulated script, not a recorded vendor response",
+  "provider": "fake",
+  "turns": [
+    {
+      "arguments": {
+        "sku": "CD-240"
+      },
+      "kind": "tool",
+      "simulated_input_tokens": 12,
+      "simulated_latency_ms": 5,
+      "simulated_output_tokens": 8,
+      "text": "",
+      "tool_name": "inventory.lookup"
+    },
+    {
+      "arguments": {
+        "query": "CD-240"
+      },
+      "kind": "tool",
+      "simulated_input_tokens": 12,
+      "simulated_latency_ms": 5,
+      "simulated_output_tokens": 8,
+      "text": "",
+      "tool_name": "notes.search"
+    },
+    {
+      "arguments": {},
+      "kind": "final",
+      "simulated_input_tokens": 12,
+      "simulated_latency_ms": 5,
+      "simulated_output_tokens": 8,
+      "text": "CD-240 gasket kit is in bin B-1 (on hand 4). Latest note N-1: recount matches the card.",
+      "tool_name": ""
+    }
+  ]
+}
