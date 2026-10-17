@@ -6,7 +6,7 @@ The token price in code is simulated. It was chosen on 2026-10-17 so that class 
 
 `SIMULATED_USD_PER_TOKEN = 0.000002` in `src/workshop/budget.py`.
 
-A scripted turn in the golden cassette uses 12 input tokens and 8 output tokens, so one accepted turn costs `20 * 0.000002 = 0.00004` simulated USD. The demo takes 3 turns: **0.00012000** simulated USD, printed by `PYTHONPATH=src python -m workshop demo` on 2026-10-17 at package 0.1.0, Python 3.12.3, git commit `631012d`.
+A scripted turn in the golden cassette uses 12 input tokens and 8 output tokens, so one accepted turn costs `20 * 0.000002 = 0.00004` simulated USD. The demo takes 3 turns: **0.00012000** simulated USD, printed by `PYTHONPATH=src python -m workshop demo` on 2026-10-17 at package 0.1.1, Python 3.12.3, git commit `COMMIT_SHA`.
 
 The gate's six cases printed these simulated costs the same day:
 
@@ -29,6 +29,7 @@ Retries on the fake path do not add a second simulated charge. A live call would
 | --- | --- | --- | --- | --- | --- | --- |
 | Offline demo | Fake script | 60 simulated tokens (3 × 20) | 0.00012000 simulated USD | Scripted 15 ms, deterministic, not a percentile | Final answer contains the bin and the note; stock unchanged | Simulated constant, 2026-10-17, `src/workshop/budget.py`. Not a vendor price. |
 | Eval gate, 6 cases | Fake script | See the table above | 0.00052000 simulated USD summed from the printed case lines | Scripted per turn, not sampled | 6/6 invariants pass | Same constant, measured 2026-10-17 via `python -m workshop eval` |
-| Optional live call | Off. Generic JSON adapter only | [EST] unknown until a team picks a public price page | [EST] do not copy a price into this repo | [EST] not run | Not run | Design-only. Read the provider's own pricing page on the day you need it, and write down the URL and the date. |
+| Optional live call | Off. Generic JSON adapter only | [EST] unknown until a team picks a public price page | [EST] do not copy a price into this repo | [EST] not run | Not run | Not run. Read the provider's own pricing page on the day you need it, and write down the URL and the date. |
+| Optional LLM judge | Off. Exit 2 without `LIVE_MODE=1` and the `LLM_*` variables. Not in CI | No tokens recorded | No spend recorded | Not run | Empty results table in [METRICS.md](METRICS.md) | Prices and `LLM_PRICE_DATE` come from the environment on the day someone runs it. None are stored here. |
 
 The admission check uses a reserve of 0.0001 simulated USD per call (`MAX_CALL_RESERVE_USD`), which is larger than one scripted turn, so a cap of 0 refuses the first call without spending.

@@ -1,4 +1,4 @@
-"""Auto-grader for the seven exercises. Checks are invariants and contracts, not diffs."""
+"""Auto-grader for the exercises. Checks are invariants and contracts, not diffs."""
 
 from __future__ import annotations
 
@@ -479,6 +479,36 @@ def grade_module_7(module: ModuleType) -> Grade:
     return Grade("7", checks)
 
 
+def grade_module_8(module: ModuleType) -> Grade:
+    checks: list[tuple[str, bool, str]] = []
+    fn = getattr(module, "compare_against_reference", None)
+    if not callable(fn):
+        return Grade("8", [("compare_against_reference", False, "missing function")])
+    sample = (
+        (True, False, True),
+        (True, True, True),
+        (False, None, False),
+    )
+    expected = {
+        "checker_compared": 3,
+        "checker_agreements": 3,
+        "llm_compared": 2,
+        "llm_agreements": 1,
+    }
+    ok, value, detail = _call(fn, sample)
+    _record(checks, "counts_checker_and_llm", ok and value == expected, detail or f"got {value!r}")
+    disagree = ((True, True, False),)
+    expected_disagree = {
+        "checker_compared": 1,
+        "checker_agreements": 0,
+        "llm_compared": 1,
+        "llm_agreements": 0,
+    }
+    ok, value, detail = _call(fn, disagree)
+    _record(checks, "counts_disagreement", ok and value == expected_disagree, detail or f"got {value!r}")
+    return Grade("8", checks)
+
+
 GRADERS = {
     "1": grade_module_1,
     "2": grade_module_2,
@@ -487,6 +517,7 @@ GRADERS = {
     "5": grade_module_5,
     "6": grade_module_6,
     "7": grade_module_7,
+    "8": grade_module_8,
 }
 
 

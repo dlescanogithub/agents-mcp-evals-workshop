@@ -4,9 +4,9 @@ Offline workshop on agents, a tiny MCP teaching server, and eval gates. What is 
 
 ## Problem and result
 
-Delivery teams can demo an agent that calls tools and still have no check that a write happened, that a note was treated as data, or that a run stayed inside a budget. This repo is a 2×3 hour enablement session (time boxes are [EST]) that practices those checks with a fake model. Nothing here is a production deployment, and no real client is connected.
+Delivery teams can demo an agent that calls tools and still have no check that a write happened, that a note was treated as data, or that a run stayed inside a budget. The planned length is two sessions of three hours (2×3 h). That duration is [EST]. This workshop has not been delivered. The labs practice those checks with a fake model. Nothing here is a production deployment, and no real client is connected.
 
-Measured result: on 2026-10-17 the offline gate passed **6 of 6** golden cases (package 0.1.0, Python 3.12.3, git commit `631012d`, command `PYTHONPATH=src python -m workshop eval`). The same day, `PYTHONPATH=src python -m pytest` reported **34 passed** and **92.25%** coverage of `src/workshop`. A later commit that only records this hash does not change the runtime.
+Measured result: on 2026-10-17 the offline gate passed **6 of 6** golden cases (package 0.1.1, Python 3.12.3, git commit `COMMIT_SHA`, command `PYTHONPATH=src python -m workshop eval`). The same day, `PYTHONPATH=src python -m pytest` reported **48 passed** and **92.79%** coverage of `src/workshop`. A later commit that only records this hash does not change the runtime.
 
 ## Demo
 
@@ -43,19 +43,20 @@ The capstone calls the same depot handlers the teaching server calls. It does no
 
 ## Results
 
-Measured 2026-10-17, package 0.1.0, Python 3.12.3, git commit `631012d`. Costs below are simulated (see `SIMULATED_USD_PER_TOKEN` in `src/workshop/budget.py`). They are not invoices.
+Measured 2026-10-17, package 0.1.1, Python 3.12.3, git commit `COMMIT_SHA`. Costs below are simulated (see `SIMULATED_USD_PER_TOKEN` in `src/workshop/budget.py`). They are not invoices.
 
 | Check | Result | Command |
 | --- | --- | --- |
-| Unit and integration tests | 34 passed, coverage 92.25% | `PYTHONPATH=src python -m pytest` |
+| Unit and integration tests | 48 passed, coverage 92.79% | `PYTHONPATH=src python -m pytest` |
 | Eval gate | 6 cases, 0 failed | `PYTHONPATH=src python -m workshop eval` |
-| Judge vs human labels | agreement 5/6, 1 disagreement | printed by the eval command |
+| Checker vs reference labels written by the author | 5 agreements, 1 disagreement, 6 items | printed by the eval command as `checker_vs_reference=5/6` |
+| Optional LLM judge | not run; command exits 2 without configuration | `PYTHONPATH=src python -m workshop llm-judge` |
 | Demo | stop `final`, 3 model calls, simulated cost 0.00012000, simulated latency 15 ms | `PYTHONPATH=src python -m workshop demo` |
 | Forced regression | exit 1, `regression_result=gate_red`, invariants `no_harmful_effect,claim_mismatch` | `PYTHONPATH=src python -m workshop eval-regression` |
-| Solution grader | modules 1–7 fail=0 | `PYTHONPATH=src python -m workshop check all --impl solution` |
+| Solution grader | modules 1–8 fail=0 | `PYTHONPATH=src python -m workshop check all --impl solution` |
 | Secret scan | findings=0 | `PYTHONPATH=src python -m workshop secretscan .` |
 | Ruff | all checks passed | `python -m ruff check src tests exercises solutions` |
-| Mypy | no issues in 71 source files | `python -m mypy` |
+| Mypy | no issues in 79 source files | `python -m mypy` |
 
 The two lookup cases use different tool orders and both pass. That is the trajectory point: the gate asks for the bin and the note, and it asks that stock did not change.
 
@@ -80,11 +81,13 @@ Design-only vs implemented:
 | Item | Status |
 | --- | --- |
 | Modules 1–7, fake provider, cassettes, grader, CI gate, forced red regression, stdio teaching server | Implemented |
+| Deterministic checker vs reference labels written by the author | Implemented. Not a model score |
+| Optional module 8 and LLM judge client | Implemented and off by default. Not part of the 2×3 h plan. Not run live. Not in CI |
+| Human-label CSV | Template only (`templates/human_labels.csv`). No filled rows |
 | Slide deck | Design only (outline) |
 | Hosted classroom environment | Design only |
 | Vendor modules for a specific model host | Design only. If added later, use only public docs, cited and dated |
 | Live provider | Optional adapter, off by default, not used by the gate |
-| LLM-as-judge | Design only. The checked-in judge is a literal phrase check |
 
 ### 2. Governance checklist
 
@@ -100,11 +103,13 @@ Design-only vs implemented:
 | Eval gate in CI, no paid API | `.github/workflows/ci.yml`, `src/workshop/evalkit/gate.py` |
 | Proof the gate can go red | `python -m workshop eval-regression` |
 | Secret scan | `src/workshop/secretscan.py` |
+| Deterministic checker vs author reference labels | `src/workshop/evalkit/checker.py` |
+| Optional LLM judge, off unless configured, never in CI | `src/workshop/evalkit/llm_judge.py` |
 | Risks | [docs/RISKS.md](docs/RISKS.md) |
 | Costs | [docs/COST.md](docs/COST.md) |
 | Incident and rollback | [docs/RUNBOOK.md](docs/RUNBOOK.md) |
 
-Not covered yet: real identity for the approver, a review queue, vendor authentication, persistent memory, multi-user tenancy, a hosted runner, and an LLM judge.
+Not covered yet: real identity for the approver, a review queue, vendor authentication, persistent memory, multi-user tenancy, a hosted runner, and a recorded live LLM-judge result. The client exists and stays off.
 
 ### 3. Business strategy
 
@@ -127,7 +132,7 @@ What this does NOT do:
 - It does not call a paid model API in tests or in CI.
 - It does not authenticate a person. `Approval.approver` is a label.
 - It does not stop prompt injection by scanning text. The lab phrase detector is a label. The control is that tool calls come from the provider turn, and writes need a grant.
-- It does not implement MCP. It implements a small JSON-RPC subset so a class can see frames on stdio. See [docs/adr/0003-teaching-mcp-subset.md](docs/adr/0003-teaching-mcp-subset.md).
+- It does not implement MCP. It implements a small JSON-RPC subset so a class can see frames on stdio. The official SDK is not used. The cited revision is 2026-07-28, accessed 2026-10-17. See [docs/adr/0003-teaching-mcp-subset.md](docs/adr/0003-teaching-mcp-subset.md).
 - It does not record real vendor traffic. Cassettes are scripts.
 - It does not prove a team is ready for production. Passing the gate means the synthetic cases passed.
 - It does not store secrets. `.env` is gitignored. The live key is never written to the JSON log on purpose (`Settings.public_dict`).
@@ -144,7 +149,7 @@ Audience: delivery engineers who will sit next to an agent feature. Comfort with
 
 Learning outcomes: explain the loop and a stop rule; reject a badly typed tool call; require a human grant for a write; call the teaching server over stdio; score a run by invariants; refuse a call that does not fit a budget; show a synthetic injection that fails closed; leave the capstone gate green and the regression red.
 
-Agenda, planning only, [EST], not a measured class:
+Agenda, planning only. The 2×3 h length is [EST]. The workshop has not been delivered:
 
 | Block | Minutes [EST] | Module |
 | --- | --- | --- |
@@ -174,6 +179,8 @@ python -m workshop check module-1 --impl solution
 ```
 
 `make eval-regression` is supposed to exit non-zero. A red result means the gate noticed the lab agent changed stock. CI treats exit code 1 as the success condition for that step.
+
+Module 8 is optional and is not on that agenda. `python -m workshop llm-judge` exits 2 until `LIVE_MODE=1` and the `LLM_*` variables are set. CI does not run it. The results table in [modules/08-llm-judge/README.md](modules/08-llm-judge/README.md) is empty.
 
 Copy `.env.example` to `.env` only on your machine if you want the variables set. The program reads the process environment. It does not open `.env` itself.
 

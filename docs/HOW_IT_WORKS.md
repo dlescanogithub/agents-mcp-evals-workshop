@@ -23,7 +23,7 @@ El servidor de la clase (módulo 3) es otra puerta al mismo depósito, por stdio
 
 ## Cómo se enseña
 
-Dos bloques de tres horas, los tiempos son [EST], no los cronometré en un curso real.
+La duración prevista es dos bloques de tres horas (2×3 h). Ese número es [EST]. El taller no se dictó: no hay cohorte ni fecha de clase.
 
 En el primer bloque se arma el loop, el permiso y el servidor chiquito. En el segundo se escribe la eval, el tope de plata, el laboratorio de inyección, y el cierre. El cierre tiene que quedar verde. Después corrés `python -m workshop eval-regression` y tiene que salir con código 1. Si sale 0, la alarma está rota: el agente vulnerable cambió el stock y nadie lo marcó.
 
@@ -46,6 +46,7 @@ El grader (`python -m workshop check module-N`) mira las funciones del ejercicio
 
 - El proveedor falso no lee el prompt. Si cambiás la pregunta y no el guion, la respuesta no cambia. Eso es intencional: la clase no depende de un modelo.
 - El detector de la frase "Ignore previous instructions" no protege nada. Protege el hecho de que una escritura sin grant no corre.
-- No hay un juez LLM. Hay una comparación literal contra una frase, y un desacuerdo a propósito con una etiqueta humana (5 de 6 en la corrida del 2026-10-17).
-- El servidor no es el SDK oficial de MCP. Es un subconjunto para ver `server/discover`, `tools/list` y `tools/call`.
+- El checker determinístico busca una frase. Lo comparás con etiquetas de referencia escritas por el autor, no con un modelo y no con un jurado. En la corrida medida del 2026-10-17 coincidió 5 de 6 (`checker_vs_reference=5/6`): el texto "located in B-1" no contiene "bin B-1" y la etiqueta de referencia dice que pasa.
+- Hay un cliente opcional de juez por modelo. Está apagado. Sin `LIVE_MODE=1` y el resto de las variables `LLM_*`, el comando sale con código 2. No hay una corrida en vivo ni una tabla con resultados. CI no lo llama.
+- El servidor no usa el SDK oficial de MCP. Sigue un subconjunto de la revisión 2026-07-28, consultada el 2026-10-17: `server/discover`, `tools/list` y `tools/call`.
 - Nada de esto demuestra experiencia de producción. Demuestra que estos casos sintéticos pasan o fallan como dice el gate.

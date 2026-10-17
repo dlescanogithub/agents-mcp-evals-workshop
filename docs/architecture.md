@@ -17,9 +17,11 @@
 | Live adapter | `src/workshop/providers/live.py` | Off unless explicitly enabled |
 | MCP subset | `src/workshop/mcpmini/` | Stdio JSON-RPC, two read tools |
 | Gate | `src/workshop/evalkit/` | Golden cases and invariant ids |
+| Deterministic checker | `src/workshop/evalkit/checker.py` | Phrase check vs author reference labels |
+| Optional LLM judge | `src/workshop/evalkit/llm_judge.py` | Off unless configured. Not used by the gate |
 | Lab follower | `src/workshop/labs/injection.py` | One scripted obedience to a note |
 | Grader | `src/workshop/grading.py` | Loads `exercises/` or `solutions/` |
-| CLI | `src/workshop/cli.py` | demo, eval, check, secretscan |
+| CLI | `src/workshop/cli.py` | demo, eval, check, secretscan, llm-judge |
 
 ## Request path for the demo
 

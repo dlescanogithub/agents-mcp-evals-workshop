@@ -24,7 +24,7 @@ Ten questions to ask before copying this workshop onto a real team. Each answer 
    That module is design-only. If they need it, cite the vendor's public page with the date you read it, and do not put a live call in the shared exercises.
 
 8. What does "good" mean: a fact in the answer, a human preference, or both?
-   Facts and effects are implemented. Preference is the calibration section: the literal judge and the human label disagree once on purpose. If they need a real judge model, it stays out of the default gate until they have labels.
+   Facts and effects are implemented. The deterministic checker disagrees once, on purpose, with reference labels written by the author. An optional LLM judge stays off unless someone sets `LIVE_MODE` outside CI. It is not part of the default gate. `templates/human_labels.csv` is a header with no rows, for a person's own labels. This repo does not ship a filled human set.
 
 9. Who owns the golden set six weeks later?
    If nobody owns it, the gate will rot. The adopting engineering lead should own cases. The facilitator owns them only during the class.

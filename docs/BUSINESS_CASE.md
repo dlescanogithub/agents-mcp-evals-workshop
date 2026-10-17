@@ -19,7 +19,7 @@ Planning assumptions, not a measurement and not a fee:
 | Input | Figure | Kind |
 | --- | --- | --- |
 | People in the room | 12 | [EST] |
-| Sessions | 2 × 3 hours | [EST] agenda in the README |
+| Sessions | 2 × 3 hours | [EST]. The workshop has not been delivered |
 | Facilitator time, including prep | 8 hours | [EST] |
 | Learner time | 12 × 6 hours = 72 hours | [EST] |
 | Vendor API spend for the labs | 0 | Measured path: fake provider, no network. The demo's simulated token cost on 2026-10-17 was 0.00012000 USD at the made-up rate in `budget.py`. That number is not an invoice. |

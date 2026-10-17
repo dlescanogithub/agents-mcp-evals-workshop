@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "agents-mcp-evals-workshop"
-version = "0.1.0"
+version = "0.1.1"
 description = "Offline workshop on agents, a tiny MCP teaching server, and invariant evals."
 readme = "README.md"
 requires-python = ">=3.11"

@@ -1,7 +1,7 @@
 PY ?= python3
 export PYTHONPATH := src:$(PYTHONPATH)
 
-.PHONY: setup lint test eval eval-regression demo check secretscan
+.PHONY: setup lint test eval eval-regression demo check secretscan secretscan-hash
 
 setup:
 	$(PY) -m pip install -e ".[dev]"
@@ -29,6 +29,9 @@ check:
 
 secretscan:
 	$(PY) -m workshop secretscan .
+
+secretscan-hash:
+	$(PY) -c "import hashlib, pathlib, re, sys; digest=hashlib.sha256(pathlib.Path('src/workshop/secretscan.py').read_bytes()).hexdigest(); print(digest); match=re.search(r'sha256: ([0-9a-f]{64})', pathlib.Path('docs/PROVENANCE.md').read_text()); sys.exit(0 if match and match.group(1)==digest else 1)"
 
 # Plain equivalents, if make is not installed:
 #   PYTHONPATH=src python -m ruff check src tests exercises solutions

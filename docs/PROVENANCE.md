@@ -1,18 +1,30 @@
 # Provenance
 
-This workshop is original material written for this repository. It is not a copy of an employer course, a client workshop, or a vendor tutorial.
+This workshop is original teaching material. Nothing in it is copied from employer work or from a client engagement.
 
-## Reference repo that was requested and not readable
+## Shared utilities
 
-The brief for this portfolio asked for a documented copy, where useful, of the eval patterns in:
+A few small utilities are maintained in parallel across the portfolio repositories and kept aligned:
 
-- Repository: `https://github.com/dlescanogithub/agent-runtime-evals` (private)
-- Branch: `cursor/agent-runtime-evals-mvp-7e58`
-- Commit: `55cfd4183fb2489d77fc9c8552e008274dc78f77`
+- cassette provider
+- invariant checks
+- JSON trace
+- structured logging
+- secretscan
 
-On 2026-10-17 the credential available to this working environment received HTTP 404 (`repository not found`) for that repo, that commit, and `git ls-remote`. Nothing from that tree was read, and nothing from it was copied.
+They are vendored copies, not a published package. A change to the scanner pattern list is meant to land in each repository that vendors the file, together with a new checksum.
 
-The pieces that brief named (an evalkit, a cassette, a fake provider, a JSONL trace, JSON logging, a secret scan) were implemented here from that description. Names overlap on purpose so a reader of both repos can compare them later. The source text does not.
+## What was adapted here
+
+The cassette, the invariant gate, the JSONL trace, and the JSON logger are those shared ideas, fitted to the Cerulean Depot exercises and to the stdio teaching server. The secret scanner is the aligned copy. The deterministic checker, the optional LLM-judge client, and the module exercises are specific to this workshop.
+
+## secretscan checksum
+
+`src/workshop/secretscan.py` is the vendored copy. Keep it identical to the copy in the other portfolio repositories.
+
+sha256: f796c96f9120734e120dc04660ad8f1a95d1af024f7e93b60ab789208db55296
+
+Recompute and check with `make secretscan-hash`. `tests/test_secretscan.py` checks the same digest.
 
 ## Spec citation
 
@@ -24,4 +36,4 @@ MCP revision 2026-07-28, accessed 2026-10-17:
 - https://modelcontextprotocol.io/specification/2026-07-28/server/discover
 - https://modelcontextprotocol.io/specification/2026-07-28/basic/versioning
 
-The teaching server follows those pages only for the frames it implements. Differences are listed in [adr/0003-teaching-mcp-subset.md](adr/0003-teaching-mcp-subset.md). The official Python SDK is not a dependency.
+The teaching server follows those pages only for the frames it implements. Differences are listed in [adr/0003-teaching-mcp-subset.md](adr/0003-teaching-mcp-subset.md). The official Python SDK is not a dependency and is not used.

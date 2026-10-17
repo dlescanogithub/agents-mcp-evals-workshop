@@ -11,6 +11,7 @@ The runnable answers are the files in `solutions/`. This page is the map, not a 
 | 5 | `solutions/module_05/solution.py` | `spent + next <= cap`. The delay doubles and then stops growing at `backoff_cap`. |
 | 6 | `solutions/module_06/solution.py` | The phrase marks the note. The invariant function ignores the phrase and looks at effects. Quoting the note is an empty failure list. |
 | 7 | `solutions/module_07/solution.py` | `FakeProvider` plus `run_agent`. The default approval is empty, so the adjust script cannot write. |
+| 8 | `solutions/module_08/solution.py` | Count checker and LLM-judge booleans against the reference. A missing LLM label is not a comparison. Optional, and not part of the 2×3 h plan. |
 
 Facilitator check:
 
@@ -18,6 +19,6 @@ Facilitator check:
 PYTHONPATH=src python -m workshop check all --impl solution
 ```
 
-Measured 2026-10-17: each module printed `fail=0`.
+Measured 2026-10-17, package 0.1.1, Python 3.12.3, git commit `COMMIT_SHA`: `python -m workshop check all --impl solution` printed `fail=0` for modules 1–8.
 
 Do not publish this file as a spoiler in the same handout as the exercises if you want people to try first. It is in the repo because the class is open-book and the CI needs the solutions to run.

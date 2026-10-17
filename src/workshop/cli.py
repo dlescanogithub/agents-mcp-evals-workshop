@@ -3,6 +3,7 @@
 from __future__ import annotations
 
 import argparse
+import os
 import sys
 from pathlib import Path
 
@@ -10,13 +11,14 @@ from workshop import __version__
 from workshop.budget import SIMULATED_USD_PER_TOKEN
 from workshop.capstone import demo_result
 from workshop.evalkit.cases import HAPPY_QUESTION
+from workshop.evalkit.checker import compare_checker_to_reference
 from workshop.evalkit.gate import run_gate, run_regression
-from workshop.evalkit.judge import calibrate
+from workshop.evalkit.llm_judge import load_live_judge_settings, run_llm_judge, urllib_transport
 from workshop.grading import grade
 from workshop.logging_setup import configure
 from workshop.secretscan import scan_path
 
-MODULES = ("1", "2", "3", "4", "5", "6", "7")
+MODULES = ("1", "2", "3", "4", "5", "6", "7", "8")
 
 
 def normalize_module(raw: str) -> str | None:
@@ -55,12 +57,10 @@ def _cmd_eval() -> int:
             f"simulated_cost_usd={item.spent_usd:.8f} failed={failed}"
         )
     status = "pass" if report.failed == 0 else "fail"
-    calibration = calibrate()
+    compared = compare_checker_to_reference()
     print(f"gate={status} cases={len(report.results)} failed={report.failed}")
-    print(
-        f"calibration_agreement={calibration.agreements}/{calibration.items} "
-        f"disagreements={calibration.disagreements}"
-    )
+    print(f"checker_vs_reference={compared.agreements}/{compared.items} disagreements={compared.disagreements}")
+    print("checker_note=checker vs reference labels written by the author")
     print(f"simulated_price_usd_per_token={SIMULATED_USD_PER_TOKEN}")
     print("provider=fake")
     return 0 if report.failed == 0 else 1
@@ -100,6 +100,22 @@ def _cmd_demo() -> int:
     return 0 if result.stop_reason == "final" and result.stock_unchanged else 1
 
 
+def _cmd_llm_judge() -> int:
+    settings = load_live_judge_settings(os.environ)
+    if settings is None:
+        print("llm_judge=not_configured")
+        print("exit_reason=missing_config")
+        return 2
+    outcome = run_llm_judge("Where is bin B-1?", "bin B-1", settings, urllib_transport)
+    print(f"llm_judge_label={outcome.label if outcome.label else ''}")
+    print(f"llm_judge_skipped={outcome.skipped}")
+    print(f"llm_judge_spent_usd={outcome.spent_usd}")
+    print(f"llm_price_date={outcome.price_date}")
+    if outcome.skipped:
+        return 1
+    return 0
+
+
 def _cmd_secretscan(path: str) -> int:
     findings = scan_path(Path(path))
     for finding in findings:
@@ -115,12 +131,16 @@ def main(argv: list[str] | None = None) -> int:
     commands = parser.add_subparsers(dest="command", required=True)
 
     check = commands.add_parser("check", help="grade a module by invariants")
-    check.add_argument("module", help="module-1 .. module-7, or all")
+    check.add_argument("module", help="module-1 .. module-8, or all")
     check.add_argument("--impl", choices=("exercise", "solution"), default="exercise")
 
     commands.add_parser("demo", help="run the scripted shift-assistant demo")
     commands.add_parser("eval", help="run the offline eval gate")
     commands.add_parser("eval-regression", help="prove the gate can go red")
+    commands.add_parser(
+        "llm-judge",
+        help="optional live judge; exits 2 when LIVE_MODE and LLM settings are absent",
+    )
 
     scan = commands.add_parser("secretscan", help="scan a tree for token-shaped strings")
     scan.add_argument("path", nargs="?", default=".")
@@ -138,6 +158,8 @@ def main(argv: list[str] | None = None) -> int:
         return _cmd_eval()
     if args.command == "eval-regression":
         return _cmd_regression()
+    if args.command == "llm-judge":
+        return _cmd_llm_judge()
     if args.command == "secretscan":
         return _cmd_secretscan(args.path)
     print(f"unknown command {args.command}", file=sys.stderr)

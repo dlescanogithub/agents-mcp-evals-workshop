@@ -6,7 +6,7 @@ Accepted. 2026-10-17.
 
 ## Context
 
-The class needs to see frames on stdio without a network install and without an API key. The official Python SDK is the production-shaped choice, and this repo does not pin it. Tests have to pass offline after the dev tools are installed.
+The class needs to see frames on stdio without a network install and without an API key. The official Python SDK is not used. Tests have to pass offline after the dev tools are installed.
 
 The spec revision cited is 2026-07-28, accessed 2026-10-17. That revision is stateless: protocol version travels on `_meta`, `server/discover` is required of servers, and `initialize` is the legacy handshake (revisions through 2025-11-25).
 
@@ -16,7 +16,7 @@ The spec revision cited is 2026-07-28, accessed 2026-10-17. That revision is sta
 
 ## Consequences
 
-Learners can point a subprocess at the server and read one line back. They cannot claim compatibility with the official SDK, with streamable HTTP, or with resources, prompts, tasks, or pagination. A production integration should use the official SDK and the current spec, not this process.
+Learners can point a subprocess at the server and read one line back. The official SDK is not used. This process is not compatible with that SDK, with streamable HTTP, or with resources, prompts, tasks, or pagination. A production integration should use the official SDK and the current spec, not this process.
 
 ## What we copied from the spec
 

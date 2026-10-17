@@ -2,7 +2,7 @@
 
 ## In this repo
 
-- Seven modules with exercises, solutions, and an invariant grader.
+- Seven modules on the planned agenda, plus an optional eighth module that is not part of that agenda, each with an exercise, a solution, and an invariant grader.
 - A fake provider, a cassette file, JSON logs, JSONL traces, bounded retries.
 - A read-only JSON-RPC stdio server with two synthetic tools, and a test client.
 - An eval gate over six golden cases and a forced-regression command that exits 1.
@@ -21,14 +21,14 @@
 ## Assumptions
 
 - Learners can read and write small Python 3.11 functions.
-- Two sessions of about three hours each are available. Those durations are [EST].
+- Two sessions of three hours (2×3 h) are the plan. Those durations are [EST]. The workshop has not been delivered.
 - Synthetic data is acceptable for the class. Cerulean Depot is not a stand-in for a mapped customer.
 - No fee is attached to this material. There is no statement of work here.
 
 ## Out of scope
 
 - Training or hosting a model.
-- The official MCP SDK, resources, prompts, tasks, pagination, and streamable HTTP.
+- The official MCP SDK (it is not used), resources, prompts, tasks, pagination, and streamable HTTP. The teaching subset cites revision 2026-07-28, accessed 2026-10-17.
 - Single sign-on, audit storage, multi-tenant data, and a production on-call rota.
 - Any claim about a real team's defect rate.
 

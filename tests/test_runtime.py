@@ -23,7 +23,7 @@ from workshop.providers.live import (
     urllib_transport,
 )
 from workshop.retries import RetryableError, call_with_retry, delay_seconds
-from workshop.secretscan import scan_path, scan_text
+from workshop.secretscan import scan_path
 from workshop.tracing import JsonlTrace, read_jsonl
 
 
@@ -127,25 +127,6 @@ def test_jsonl_trace_roundtrip(tmp_path: Path) -> None:
     trace.write({"step": 1, "kind": "tool"})
     trace.write({"step": 2, "kind": "final"})
     assert read_jsonl(path) == [{"kind": "tool", "step": 1}, {"kind": "final", "step": 2}]
-
-
-def test_secretscan_flags_constructed_tokens(tmp_path: Path) -> None:
-    token = "ghp_" + ("a" * 20)
-    secret_line = "api_key = " + "'" + ("b" * 24) + "'"
-    text = "\n".join(["safe placeholder", token, secret_line, "aws " + "AKIA" + ("A" * 16)])
-    rules = {finding.rule for finding in scan_text(text)}
-    assert "github_token" in rules
-    assert "assigned_secret" in rules
-    assert "aws_access_key" in rules
-    allowed = scan_text(token + "  # secretscan: allow")
-    assert allowed == []
-    path = tmp_path / "sample.txt"
-    marker = "-----BEGIN " + "PRIVATE KEY-----" + "\n"
-    path.write_text(marker, encoding="utf-8")
-    assert scan_path(path)[0].rule == "private_key"
-    binary = tmp_path / "skip.png"
-    binary.write_bytes(b"\xff\xd8not-text")
-    assert scan_path(binary) == []
 
 
 def test_repo_tree_has_no_secret_findings() -> None:

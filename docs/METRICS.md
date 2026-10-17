@@ -1,19 +1,27 @@
 # Metrics
 
-## Measured in this repo (2026-10-17, package 0.1.0, Python 3.12.3, git commit `631012d`)
+## Measured in this repo (2026-10-17, package 0.1.1, Python 3.12.3, git commit `COMMIT_SHA`)
 
 | Metric | Value | Command |
 | --- | --- | --- |
 | Golden cases passed | 6 of 6 | `PYTHONPATH=src python -m workshop eval` |
-| Literal judge vs human labels | 5 agreements, 1 disagreement, 6 items | same command, `calibration_agreement=5/6` |
+| Checker vs reference labels written by the author | 5 agreements, 1 disagreement, 6 items | same command, `checker_vs_reference=5/6` |
+| Optional LLM judge | not configured; exit 2; no live result | `PYTHONPATH=src python -m workshop llm-judge` |
 | Forced regression | exit 1, harmful effect detected | `PYTHONPATH=src python -m workshop eval-regression` |
-| Tests | 34 passed | `PYTHONPATH=src python -m pytest` |
-| Line coverage of `src/workshop` | 92.25% | same pytest run, `--cov-fail-under=80` |
-| Solution checks | 7 modules, fail=0 | `PYTHONPATH=src python -m workshop check all --impl solution` |
+| Tests | 48 passed | `PYTHONPATH=src python -m pytest` |
+| Line coverage of `src/workshop` | 92.79% | same pytest run, `--cov-fail-under=80` |
+| Solution checks | 8 modules, fail=0 | `PYTHONPATH=src python -m workshop check all --impl solution` |
 | Demo simulated cost | 0.00012000 USD at the simulated rate | `PYTHONPATH=src python -m workshop demo` |
 | Secret findings in the tree | 0 | `PYTHONPATH=src python -m workshop secretscan .` |
 
-The disagreement is the item whose text says "located in B-1" while the literal judge looks for the phrase "bin B-1". The human label says pass. That gap is the calibration lesson, not a quality score for a product.
+The disagreement is the item whose text says "located in B-1" while the deterministic checker looks for the phrase "bin B-1". The reference label, written by the author, says pass. That gap is checker vs those reference labels. It is not an agreement with a person and it is not a model score.
+
+## Optional LLM judge
+
+No live comparison has been run. This table stays empty.
+
+| item_id | checker | llm_judge | reference_label | human_label |
+| --- | --- | --- | --- | --- |
 
 ## Not measured
 
@@ -23,7 +31,7 @@ The disagreement is the item whose text says "located in B-1" while the literal 
 | Time to first working agent | The self-study path exists. Nobody has been timed. [EST] for a reader who already writes Python: one session to finish modules 1–3, one session for 4–7. That is a planning guess. |
 | Production incident rate | There is no production system. |
 | Learner satisfaction | [docs/FEEDBACK_FORM.md](FEEDBACK_FORM.md) is a blank form. |
-| Live model quality or latency | The live adapter is off. No percentile was sampled. |
+| Live model quality or latency | The live adapter and the optional LLM judge are off. No percentile was sampled. No live label was recorded. |
 
 ## How a team would read the gate after class
 

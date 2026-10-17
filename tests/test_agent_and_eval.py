@@ -10,9 +10,9 @@ from workshop.agent.loop import run_agent
 from workshop.agent.stopping import choose_stop_reason
 from workshop.domain import fresh_state
 from workshop.evalkit.cases import cassette_path, happy_turns
+from workshop.evalkit.checker import compare_checker_to_reference, deterministic_checker
 from workshop.evalkit.gate import run_gate, run_regression
 from workshop.evalkit.invariants import failed_invariants
-from workshop.evalkit.judge import calibrate, literal_judge
 from workshop.models import Approval, Effect, ModelTurn, RunResult
 from workshop.providers.base import ProviderExhausted
 from workshop.providers.fake import FakeProvider
@@ -190,7 +190,7 @@ def test_gate_is_green_and_regression_is_red() -> None:
     assert "stopped" in names
 
 
-def test_claim_mismatch_and_calibration() -> None:
+def test_claim_mismatch_and_checker() -> None:
     lied = RunResult(
         final_text="stock updated",
         stop_reason="final",
@@ -203,11 +203,11 @@ def test_claim_mismatch_and_calibration() -> None:
         stock_unchanged=True,
     )
     assert "claim_mismatch" in failed_invariants(lied, required_facts=(), cap_usd=1, forbid_writes=True)
-    report = calibrate()
+    report = compare_checker_to_reference()
     assert report.items == 6
     assert report.agreements == 5
     assert report.disagreements == 1
-    assert literal_judge("located in B-1", "bin B-1") is False
+    assert deterministic_checker("located in B-1", "bin B-1") is False
     assert cassette_path().is_file()
     assert happy_turns()[0].tool_name == "inventory.lookup"
 

@@ -6,7 +6,7 @@ Given a finished `RunResult`, return the invariant ids that failed. An empty lis
 
 ## Concepts
 
-A golden set is a list of cases with a question, a script, and conditions. Deterministic checks look at the result you already have. This class does not call an LLM judge. `src/workshop/evalkit/judge.py` is a literal phrase check plus six human labels. On 2026-10-17 that comparison agreed 5 times and disagreed once: the human accepts "located in B-1" and the literal judge looks for "bin B-1". A live LLM judge is design-only and stays off.
+A golden set is a list of cases with a question, a script, and conditions. Deterministic checks look at the result you already have. `src/workshop/evalkit/checker.py` is a deterministic checker: a phrase check compared with reference labels written by the author. On 2026-10-17 that comparison agreed 5 times and disagreed once (`checker_vs_reference=5/6`): the reference label says pass for "located in B-1", and the checker looks for "bin B-1". That is not a model score. An optional LLM judge lives in module 8. It stays off, it is not part of this module, and CI does not call it.
 
 Trajectory checks would require the tool names in one order. We do not do that. The fixture `order_does_not_matter` has notes first and stock second, and it passes if the facts are in the final text and nothing wrote.
 
@@ -43,4 +43,4 @@ Failing a run because the tools were "in the wrong order."
 
 ## What this module does not do
 
-It does not train a judge, and it does not score style.
+It does not call a model, and it does not score style.

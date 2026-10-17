@@ -1,13 +1,13 @@
 # Facilitator guide
 
-Times are [EST]. They are a plan, not a measurement of a class that already happened.
+Times are [EST]. The planned length is 2×3 h. The workshop has not been delivered. These tables are a plan, not a record of a class.
 
 ## Before the day
 
 - Run `python -m workshop eval` and confirm exit 0.
 - Run `python -m workshop eval-regression` and confirm exit 1 and the line `regression_result=gate_red`.
 - Run `python -m workshop secretscan .` and confirm `findings=0`.
-- Leave `WORKSHOP_ENABLE_LIVE_PROVIDER` unset. If a learner asks to try a live model, the answer for the shared exercises is no.
+- Leave `WORKSHOP_ENABLE_LIVE_PROVIDER` unset. Leave `LIVE_MODE` unset. If a learner asks to try a live model, the answer for the shared exercises is no. Module 8 is optional and is not on the clock.
 - Skim [PRE_READING.md](PRE_READING.md). Send it the day before. It is one sitting, not a course.
 
 ## Session 1

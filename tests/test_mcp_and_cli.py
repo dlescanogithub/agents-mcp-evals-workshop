@@ -113,7 +113,7 @@ def test_subprocess_lookup() -> None:
 
 
 def test_solutions_pass_and_exercises_fail() -> None:
-    for module_id in ("1", "2", "3", "4", "5", "6", "7"):
+    for module_id in ("1", "2", "3", "4", "5", "6", "7", "8"):
         solution = grade(module_id, "solution")
         assert solution.failed == 0, solution.failed_names
         exercise = grade(module_id, "exercise")
@@ -128,7 +128,8 @@ def test_cli_demo_eval_and_regression(capsys: pytest.CaptureFixture[str]) -> Non
     assert main(["eval"]) == 0
     evaluation = capsys.readouterr().out
     assert "gate=pass cases=6 failed=0" in evaluation
-    assert "calibration_agreement=5/6" in evaluation
+    assert "checker_vs_reference=5/6" in evaluation
+    assert "checker_note=checker vs reference labels written by the author" in evaluation
     assert main(["eval-regression"]) == 1
     regression = capsys.readouterr().out
     assert "regression_result=gate_red" in regression

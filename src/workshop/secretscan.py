@@ -1,4 +1,9 @@
-"""Lightweight secret scan for CI. It looks for common token shapes, not entropy."""
+"""Token-shape scanner shared across the portfolio repositories.
+
+The pattern list is the aligned copy. Do not add workshop-only rules here.
+A change belongs in every repository that vendors this file, with a new sha256
+in that repository's provenance note.
+"""
 
 from __future__ import annotations
 
@@ -21,16 +26,15 @@ SKIP_DIRS = {
 }
 
 PATTERNS: tuple[tuple[str, re.Pattern[str]], ...] = (
-    ("aws_access_key", re.compile(r"AKIA[0-9A-Z]{16}")),
-    ("private_key", re.compile(r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----")),
+    ("xai_prefix", re.compile(r"xai-[A-Za-z0-9_-]{20,}")),
+    ("sk_prefix", re.compile(r"sk-(?:proj-)?[A-Za-z0-9]{20,}")),
+    ("sk_ant_prefix", re.compile(r"sk-ant-[A-Za-z0-9]{20,}")),
+    ("sk_underscore_prefix", re.compile(r"sk_[A-Za-z0-9]{20,}")),
     ("github_token", re.compile(r"ghp_[A-Za-z0-9]{20,}")),
     ("github_pat", re.compile(r"github_pat_[A-Za-z0-9_]{20,}")),
-    ("slack_token", re.compile(r"xox[baprs]-[A-Za-z0-9-]{10,}")),
-    ("vendor_secret_key", re.compile(r"sk-(?:live|proj|ant)-[A-Za-z0-9]{10,}")),
-    (
-        "assigned_secret",
-        re.compile(r"(?i)(?:api[_-]?key|secret|token)\s*[:=]\s*['\"][A-Za-z0-9_+\/=-]{20,}['\"]"),
-    ),
+    ("aws_access_key", re.compile(r"AKIA[0-9A-Z]{16}")),
+    ("bearer_token", re.compile(r"Bearer [A-Za-z0-9._~+/-]{20,}")),
+    ("private_key", re.compile(r"-----BEGIN (?:RSA |EC |OPENSSH )?PRIVATE KEY-----")),
 )
 
 MAX_BYTES = 1_000_000
