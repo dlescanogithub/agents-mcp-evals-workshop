@@ -1,5 +1,7 @@
 # agents-mcp-evals-workshop
 
+[![ci](https://github.com/dlescanogithub/agents-mcp-evals-workshop/actions/workflows/ci.yml/badge.svg)](https://github.com/dlescanogithub/agents-mcp-evals-workshop/actions/workflows/ci.yml)
+
 Offline workshop on agents, a tiny MCP teaching server, and eval gates. What is tested is a scripted shift assistant for the fictional Cerulean Depot: invariants on effects, cost, and facts, not a fixed tool-call script.
 
 ## Problem and result
