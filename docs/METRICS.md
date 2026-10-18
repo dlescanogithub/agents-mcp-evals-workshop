@@ -1,6 +1,8 @@
 # Metrics
 
-## Measured in this repo (2026-10-17, package 0.1.1, Python 3.12.3, pre-squash SHA `f7b0158` on branch `cursor/agents-mcp-evals-workshop-e2be`; `main` is the squash `c590b91`)
+## Measured in this repo (2026-10-18, package 0.1.1, Python 3.12.3, main commit `496a705e1a21a1d533b57be2160d93e29496d233`)
+
+The original workshop is PR #1, squash `c590b91` on main. The commands below were run again on the main commit named above.
 
 | Metric | Value | Command |
 | --- | --- | --- |
@@ -18,7 +20,7 @@ The disagreement is the item whose text says "located in B-1" while the determin
 
 ## Optional LLM judge
 
-No live comparison has been run. This table stays empty.
+On 2026-10-18, `PYTHONPATH=src python -m workshop llm-judge` exited 2 with `llm_judge=not_configured`. A live comparison was not re-measured. It needs an endpoint and a key. This table stays empty.
 
 | item_id | checker | llm_judge | reference_label | human_label |
 | --- | --- | --- | --- | --- |

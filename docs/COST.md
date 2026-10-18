@@ -6,7 +6,7 @@ The token price in code is simulated. It was chosen on 2026-10-17 so that class 
 
 `SIMULATED_USD_PER_TOKEN = 0.000002` in `src/workshop/budget.py`.
 
-A scripted turn in the golden cassette uses 12 input tokens and 8 output tokens, so one accepted turn costs `20 * 0.000002 = 0.00004` simulated USD. The demo takes 3 turns: **0.00012000** simulated USD, printed by `PYTHONPATH=src python -m workshop demo` on 2026-10-17 at package 0.1.1, Python 3.12.3, pre-squash SHA `f7b0158` on branch `cursor/agents-mcp-evals-workshop-e2be` (`main` is the squash `c590b91`).
+A scripted turn in the golden cassette uses 12 input tokens and 8 output tokens, so one accepted turn costs `20 * 0.000002 = 0.00004` simulated USD. The demo takes 3 turns: **0.00012000** simulated USD, printed by `PYTHONPATH=src python -m workshop demo` on 2026-10-18 at package 0.1.1, Python 3.12.3, main commit `496a705e1a21a1d533b57be2160d93e29496d233`. The original workshop is PR #1, squash `c590b91` on main.
 
 The gate's six cases printed these simulated costs the same day:
 
@@ -27,9 +27,9 @@ Retries on the fake path do not add a second simulated charge. A live call would
 
 | Scenario | Model / provider | Tokens or units | Cost / run | p50 / p95 latency | Quality | Price date / source |
 | --- | --- | --- | --- | --- | --- | --- |
-| Offline demo | Fake script | 60 simulated tokens (3 × 20) | 0.00012000 simulated USD | Scripted 15 ms, deterministic, not a percentile | Final answer contains the bin and the note; stock unchanged | Simulated constant, 2026-10-17, `src/workshop/budget.py`. Not a vendor price. |
-| Eval gate, 6 cases | Fake script | See the table above | 0.00052000 simulated USD summed from the printed case lines | Scripted per turn, not sampled | 6/6 invariants pass | Same constant, measured 2026-10-17 via `python -m workshop eval` |
+| Offline demo | Fake script | 60 simulated tokens (3 × 20) | 0.00012000 simulated USD | Scripted 15 ms, deterministic, not a percentile | Final answer contains the bin and the note; stock unchanged | Simulated constant in `src/workshop/budget.py`, chosen 2026-10-17. Demo re-measured 2026-10-18. Not a vendor price. |
+| Eval gate, 6 cases | Fake script | See the table above | 0.00052000 simulated USD summed from the printed case lines | Scripted per turn, not sampled | 6/6 invariants pass | Same simulated constant, measured 2026-10-18 via `PYTHONPATH=src python -m workshop eval` on main `496a705e1a21a1d533b57be2160d93e29496d233` |
 | Optional live call | Off. Generic JSON adapter only | [EST] unknown until a team picks a public price page | [EST] do not copy a price into this repo | [EST] not run | Not run | Not run. Read the provider's own pricing page on the day you need it, and write down the URL and the date. |
-| Optional LLM judge | Off. Exit 2 without `LIVE_MODE=1` and the `LLM_*` variables. Not in CI | No tokens recorded | No spend recorded | Not run | Empty results table in [METRICS.md](METRICS.md) | Prices and `LLM_PRICE_DATE` come from the environment on the day someone runs it. None are stored here. |
+| Optional LLM judge | Off. On 2026-10-18, `PYTHONPATH=src python -m workshop llm-judge` exited 2 with `llm_judge=not_configured`. Not in CI | No tokens recorded | No spend recorded | Not run | Empty results table in [METRICS.md](METRICS.md) | A live call was not re-measured. It needs an endpoint and a key. Prices and `LLM_PRICE_DATE` come from the environment on the day someone runs it. None are stored here. |
 
 The admission check uses a reserve of 0.0001 simulated USD per call (`MAX_CALL_RESERVE_USD`), which is larger than one scripted turn, so a cap of 0 refuses the first call without spending.
