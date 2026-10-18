@@ -19,6 +19,6 @@ Facilitator check:
 PYTHONPATH=src python -m workshop check all --impl solution
 ```
 
-Measured 2026-10-17, package 0.1.1, Python 3.12.3, git commit `f7b0158`: `python -m workshop check all --impl solution` printed `fail=0` for modules 1–8.
+Measured 2026-10-17, package 0.1.1, Python 3.12.3, pre-squash SHA `f7b0158` on branch `cursor/agents-mcp-evals-workshop-e2be` (`main` is the squash `c590b91`): `python -m workshop check all --impl solution` printed `fail=0` for modules 1–8.
 
 Do not publish this file as a spoiler in the same handout as the exercises if you want people to try first. It is in the repo because the class is open-book and the CI needs the solutions to run.
