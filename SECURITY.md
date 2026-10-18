@@ -1,10 +1,10 @@
 # Security
 
-This is a private teaching repo. It is not a service. Please do not open it to the public as part of a class unless the owner decides that.
+This is a teaching repo. It is not a service.
 
 ## Reporting
 
-Open a private security advisory on this repository, or contact the maintainer out of band. Do not put keys, tokens, or customer data in the report.
+Use GitHub private vulnerability reporting (Security tab, Report a vulnerability). Do not put keys, tokens, or customer data in the report.
 
 ## What we expect contributors to do
 

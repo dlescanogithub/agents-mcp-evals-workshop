@@ -1,6 +1,6 @@
 # Risks
 
-Owners are roles for this teaching repo, not a staffed rota. "Maintainer" is the person who merges changes to this private repository.
+Owners are roles for this teaching repo, not a staffed rota. "Maintainer" is the person who merges changes to this repository.
 
 | Risk | Probability | Impact | Mitigation | Owner |
 | --- | --- | --- | --- | --- |

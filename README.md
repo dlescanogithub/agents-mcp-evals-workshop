@@ -6,7 +6,7 @@ Offline workshop on agents, a tiny MCP teaching server, and eval gates. What is 
 
 Delivery teams can demo an agent that calls tools and still have no check that a write happened, that a note was treated as data, or that a run stayed inside a budget. The planned length is two sessions of three hours (2×3 h). That duration is [EST]. This workshop has not been delivered. The labs practice those checks with a fake model. Nothing here is a production deployment, and no real client is connected.
 
-Measured result: on 2026-10-17 the offline gate passed **6 of 6** golden cases (package 0.1.1, Python 3.12.3, git commit `f7b0158`, command `PYTHONPATH=src python -m workshop eval`). The same day, `PYTHONPATH=src python -m pytest` reported **48 passed** and **92.79%** coverage of `src/workshop`. A later commit that only records this hash does not change the runtime.
+Measured result: on 2026-10-17 the offline gate passed **6 of 6** golden cases (package 0.1.1, Python 3.12.3, command `PYTHONPATH=src python -m workshop eval`). The same day, `PYTHONPATH=src python -m pytest` reported **48 passed** and **92.79%** coverage of `src/workshop`. That run is pre-squash SHA `f7b0158` on branch `cursor/agents-mcp-evals-workshop-e2be`. `main` is the squash `c590b91`. The figures are unchanged. A later commit on that branch only records this hash and does not change the runtime.
 
 ## Demo
 
@@ -43,7 +43,7 @@ The capstone calls the same depot handlers the teaching server calls. It does no
 
 ## Results
 
-Measured 2026-10-17, package 0.1.1, Python 3.12.3, git commit `f7b0158`. Costs below are simulated (see `SIMULATED_USD_PER_TOKEN` in `src/workshop/budget.py`). They are not invoices.
+Measured 2026-10-17, package 0.1.1, Python 3.12.3, pre-squash SHA `f7b0158` on branch `cursor/agents-mcp-evals-workshop-e2be` (`main` is the squash `c590b91`). Costs below are simulated (see `SIMULATED_USD_PER_TOKEN` in `src/workshop/budget.py`). They are not invoices.
 
 | Check | Result | Command |
 | --- | --- | --- |

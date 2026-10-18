@@ -1,6 +1,6 @@
 # Metrics
 
-## Measured in this repo (2026-10-17, package 0.1.1, Python 3.12.3, git commit `f7b0158`)
+## Measured in this repo (2026-10-17, package 0.1.1, Python 3.12.3, pre-squash SHA `f7b0158` on branch `cursor/agents-mcp-evals-workshop-e2be`; `main` is the squash `c590b91`)
 
 | Metric | Value | Command |
 | --- | --- | --- |

@@ -1,5 +1,9 @@
 # Changelog
 
+## Unreleased
+
+- Docs only. Security describes a teaching repo and points vulnerability reports at GitHub private vulnerability reporting. Measurement notes name pre-squash SHA `f7b0158` on branch `cursor/agents-mcp-evals-workshop-e2be`; `main` is the squash `c590b91`. The measured figures are unchanged.
+
 ## 0.1.1 - 2026-10-17
 
 - Renamed the phrase check to deterministic checker. The 5/6 figure is checker vs reference labels written by the author.
