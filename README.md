@@ -195,6 +195,7 @@ Copy `.env.example` to `.env` only on your machine if you want the variables set
 
 ## Docs index
 
+- [Narrated recording of a real offline run, with number trace](docs/demo/)
 - [How it works (rioplatense)](docs/HOW_IT_WORKS.md)
 - [Business case](docs/BUSINESS_CASE.md)
 - [Discovery questions](docs/DISCOVERY.md)
