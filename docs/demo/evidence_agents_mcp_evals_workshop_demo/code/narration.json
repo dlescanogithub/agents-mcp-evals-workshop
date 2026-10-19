@@ -1,0 +1,34 @@
+[
+ {
+  "id": "A_hook",
+  "text": "A demo agent can call tools, yet nothing checks that writes happened, that notes stayed data, or that the budget held. Offline workshop: fake model, fictional depot, no network."
+ },
+ {
+  "id": "B_demo",
+  "text": "The scripted assistant looks up a bin and reads a note: three model calls, two reads. Simulated cost zero point zero zero zero one two dollars, network none."
+ },
+ {
+  "id": "C_mcp",
+  "text": "A tiny teaching server speaks JSON-RPC over standard input and output, with two read tools. Ask it to adjust stock: refused, the write tool is not exported. A small subset, not the official MCP SDK."
+ },
+ {
+  "id": "D_eval",
+  "text": "The gate scores invariants, not a fixed tool order. Six golden cases, zero failed; the two lookups use different tool orders. The checker agrees with the author on five of six; one disagreement, shown."
+ },
+ {
+  "id": "E_red",
+  "text": "The lab agent that obeys an injected note changes stock. The gate goes red, exit one, as expected."
+ },
+ {
+  "id": "F_learner",
+  "text": "Learners start from failing exercises: module one, six failures. Solutions pass, modules one to eight."
+ },
+ {
+  "id": "G_caveat",
+  "text": "Caveats. Not delivered; two sessions of three hours is E-S-T. The model is a script: passing the gate means the synthetic cases passed, not production readiness. MCP here is a small subset."
+ },
+ {
+  "id": "H_close",
+  "text": "Deployment strategist angle: discovery first, not a model name. Shadow against a cassette and the gate. Only then a live provider, behind the same gate. Not covered: real identity, review queue, hosted runner. Labs cost zero vendor spend. Business figures are E-S-T."
+ }
+]

@@ -1,0 +1,88 @@
+1
+00:00:00,920 --> 00:00:08,120
+Un agente de demo puede llamar herramientas, pero nada verifica que se hicieron
+escrituras, que las notas siguieron siendo datos, o que se respetó el presupuesto.
+
+2
+00:00:08,210 --> 00:00:12,300
+Taller offline: modelo falso, depósito ficticio, sin red.
+
+3
+00:00:12,740 --> 00:00:18,380
+El asistente guionado busca una ubicación y lee una nota: tres llamadas al modelo, dos
+lecturas.
+
+4
+00:00:18,410 --> 00:00:23,800
+Costo simulado 0,00012 dólares, red ninguna.
+
+5
+00:00:25,120 --> 00:00:31,670
+Un pequeño servidor didáctico habla JSON-RPC por stdio, con dos herramientas de
+lectura.
+
+6
+00:00:31,750 --> 00:00:35,860
+Si le pedís ajustar el stock: rechazado, la herramienta de escritura no está
+exportada.
+
+7
+00:00:35,890 --> 00:00:39,460
+Un subconjunto pequeño, no el SDK oficial de MCP.
+
+8
+00:00:40,780 --> 00:00:44,030
+El gate puntúa invariantes, no un orden fijo de herramientas.
+
+9
+00:00:44,130 --> 00:00:48,800
+Seis casos de referencia, cero fallidos; los dos lookups usan órdenes de herramientas
+distintos.
+
+10
+00:00:48,830 --> 00:00:53,340
+El verificador coincide con el autor en cinco de seis; un desacuerdo, mostrado.
+
+11
+00:00:54,660 --> 00:00:58,380
+El agente de laboratorio que obedece una nota inyectada cambia el stock.
+
+12
+00:00:58,470 --> 00:01:01,590
+El gate se pone en rojo, sale con uno, como se espera.
+
+13
+00:01:02,930 --> 00:01:07,370
+Quienes aprenden empiezan con ejercicios que fallan: módulo uno, seis fallas.
+
+14
+00:01:07,400 --> 00:01:10,140
+Las soluciones pasan, módulos uno a ocho.
+
+15
+00:01:11,420 --> 00:01:16,790
+Salvedades. No se dictó; dos sesiones de tres horas es [EST].
+
+16
+00:01:16,820 --> 00:01:22,830
+El modelo es un guion: pasar el gate significa que pasaron los casos sintéticos, no
+que esté listo para producción.
+
+17
+00:01:22,930 --> 00:01:25,210
+El MCP de acá es un subconjunto pequeño.
+
+18
+00:01:26,390 --> 00:01:32,870
+Ángulo de Deployment Strategist: primero discovery, no el nombre de un modelo. Shadow
+contra un cassette y el gate.
+
+19
+00:01:32,930 --> 00:01:40,300
+Recién después un proveedor real, detrás del mismo gate. No cubierto: identidad real,
+cola de revisión, runner alojado.
+
+20
+00:01:40,380 --> 00:01:44,560
+Los labs cuestan cero en proveedores. Las cifras de negocio son [EST].
+

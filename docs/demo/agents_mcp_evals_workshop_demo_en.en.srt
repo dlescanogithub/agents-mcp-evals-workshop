@@ -1,0 +1,86 @@
+1
+00:00:00,920 --> 00:00:08,120
+A demo agent can call tools, yet nothing checks that writes happened, that
+notes stayed data, or that the budget held.
+
+2
+00:00:08,210 --> 00:00:12,300
+Offline workshop: fake model, fictional depot, no network.
+
+3
+00:00:12,740 --> 00:00:18,380
+The scripted assistant looks up a bin and reads a note: three model calls, two
+reads.
+
+4
+00:00:18,410 --> 00:00:23,800
+Simulated cost zero point zero zero zero one two dollars, network none.
+
+5
+00:00:25,120 --> 00:00:31,670
+A tiny teaching server speaks JSON-RPC over standard input and output, with
+two read tools.
+
+6
+00:00:31,750 --> 00:00:35,860
+Ask it to adjust stock: refused, the write tool is not exported.
+
+7
+00:00:35,890 --> 00:00:39,460
+A small subset, not the official MCP SDK.
+
+8
+00:00:40,780 --> 00:00:44,030
+The gate scores invariants, not a fixed tool order.
+
+9
+00:00:44,130 --> 00:00:48,800
+Six golden cases, zero failed; the two lookups use different tool orders.
+
+10
+00:00:48,830 --> 00:00:53,340
+The checker agrees with the author on five of six; one disagreement, shown.
+
+11
+00:00:54,660 --> 00:00:58,380
+The lab agent that obeys an injected note changes stock.
+
+12
+00:00:58,470 --> 00:01:01,590
+The gate goes red, exit one, as expected.
+
+13
+00:01:02,930 --> 00:01:07,370
+Learners start from failing exercises: module one, six failures.
+
+14
+00:01:07,400 --> 00:01:10,140
+Solutions pass, modules one to eight.
+
+15
+00:01:11,420 --> 00:01:16,790
+Caveats. Not delivered; two sessions of three hours is [EST].
+
+16
+00:01:16,820 --> 00:01:22,830
+The model is a script: passing the gate means the synthetic cases passed, not
+production readiness.
+
+17
+00:01:22,930 --> 00:01:25,210
+MCP here is a small subset.
+
+18
+00:01:26,390 --> 00:01:32,870
+Deployment strategist angle: discovery first, not a model name. Shadow against
+a cassette and the gate.
+
+19
+00:01:32,930 --> 00:01:40,300
+Only then a live provider, behind the same gate. Not covered: real identity,
+review queue, hosted runner.
+
+20
+00:01:40,380 --> 00:01:44,560
+Labs cost zero vendor spend. Business figures are [EST].
+
