@@ -213,3 +213,19 @@ Copy `.env.example` to `.env` only on your machine if you want the variables set
 - [Feedback form](docs/FEEDBACK_FORM.md)
 - [Slides outline (design only)](docs/SLIDES_OUTLINE.md)
 - [Decisions](docs/adr/)
+
+## Authorship and how this was built
+
+This repository was built with AI-assisted development.
+
+**What I did (Diego Lescano):**
+- Chose the problem and the scope: which failure to show, what is out of scope, and what the repo must not claim.
+- Set the governance and business-strategy requirements for every case: approval controls, traceability, risks and costs, estimated ROI, rollout and metrics.
+- Set the engineering standards: Python, tests, CI, synthetic data only, no real client or employer data.
+- Reviewed and approved each change before merge, and decided what became public and when.
+
+**What AI coding agents did:**
+- Wrote most of the code, tests and documentation, working from my briefs and under my review.
+
+**What this repo does not claim:**
+- It is not a production system, and every data set is synthetic.
