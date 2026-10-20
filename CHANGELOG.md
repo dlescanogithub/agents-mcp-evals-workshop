@@ -2,6 +2,7 @@
 
 ## Unreleased
 
+- Added a three-line TL;DR under the README title and badges. Docs only.
 - Added `docs/demo/`: a narrated recording of a real offline run, with English and Spanish subtitles and a number trace. Docs only.
 - Docs only. Security describes a teaching repo and points vulnerability reports at GitHub private vulnerability reporting.
 - Re-measured on 2026-10-18, package 0.1.1, Python 3.12.3, main commit `496a705e1a21a1d533b57be2160d93e29496d233`: eval 6 of 6, checker vs author reference labels 5/6, pytest 48 passed at 92.79% coverage, demo simulated cost 0.00012000 USD and simulated latency 15 ms, solution modules 1–8 fail=0, secretscan findings=0, ruff clean, mypy clean on 79 files, eval-regression exit 1, llm-judge exit 2 without configuration. The original workshop is PR #1, squash `c590b91` on main. A live LLM-judge call was not re-measured.

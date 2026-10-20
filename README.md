@@ -2,6 +2,12 @@
 
 [![ci](https://github.com/dlescanogithub/agents-mcp-evals-workshop/actions/workflows/ci.yml/badge.svg)](https://github.com/dlescanogithub/agents-mcp-evals-workshop/actions/workflows/ci.yml)
 
+**TL;DR**
+
+- Offline workshop on agents, a tiny MCP teaching server, and eval gates. The problem: a tool-calling demo can still have no check that a write happened, that a note was treated as data, or that a run stayed inside a budget.
+- Measured result: on 2026-10-18 the offline gate passed 6 of 6 golden cases. Nothing here is a production deployment.
+- One command, no network, no API key: `PYTHONPATH=src python -m workshop demo`.
+
 Offline workshop on agents, a tiny MCP teaching server, and eval gates. What is tested is a scripted shift assistant for the fictional Cerulean Depot: invariants on effects, cost, and facts, not a fixed tool-call script.
 
 ## Problem and result
