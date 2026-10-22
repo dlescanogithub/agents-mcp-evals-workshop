@@ -4,6 +4,8 @@
 
 The original workshop is PR #1, squash `c590b91` on main. The commands below were run again on the main commit named above.
 
+The same counts were printed again on **2026-10-22** (**MEASURED**), package 0.1.1, Python 3.12.3, commit `9d10f1d4d4dc8045ccb85749204a926bc2dba912`. `python -m pytest --cov=workshop --cov-report=term-missing --cov-fail-under=80` printed 48 passed and 92.79% total coverage (1456 statements, 105 missed). Eval, the checker line, the demo's SIMULATED cost and latency, the solution grader, the secret scan, the red regression, the unconfigured LLM judge, ruff, and mypy matched the table. The docs change that records this paragraph does not edit `src/`. The 2026-10-18 rows stay attributed to `496a705e1a21a1d533b57be2160d93e29496d233`.
+
 | Metric | Value | Command |
 | --- | --- | --- |
 | Golden cases passed | 6 of 6 | `PYTHONPATH=src python -m workshop eval` |
