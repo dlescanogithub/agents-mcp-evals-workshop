@@ -4,7 +4,7 @@ This workshop is original teaching material. Nothing in it is copied from employ
 
 ## Shared utilities
 
-A few small utilities are maintained in parallel across the portfolio repositories and kept aligned:
+A few small utilities are maintained in parallel across the teaching repositories that vendor them, and kept aligned:
 
 - cassette provider
 - invariant checks
@@ -20,7 +20,7 @@ The cassette, the invariant gate, the JSONL trace, and the JSON logger are those
 
 ## secretscan checksum
 
-`src/workshop/secretscan.py` is the vendored copy. Keep it identical to the copy in the other portfolio repositories.
+`src/workshop/secretscan.py` is the vendored copy. Keep it identical to the copy in the other teaching repositories that vendor it.
 
 sha256: f796c96f9120734e120dc04660ad8f1a95d1af024f7e93b60ab789208db55296
 

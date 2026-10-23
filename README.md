@@ -287,7 +287,7 @@ Copy `.env.example` to `.env` only on your machine if you want the variables set
 ## Docs index
 
 - [Narrated recording of a real offline run, with number trace](docs/demo/)
-- [How it works (rioplatense)](docs/HOW_IT_WORKS.md)
+- [How the workshop works](docs/HOW_IT_WORKS.md)
 - [Business case](docs/BUSINESS_CASE.md)
 - [Business value](docs/BUSINESS_VALUE.md) — who would buy the class, levers, KPIs, [EST] delivery cost, ROI sketch. The workshop has not been delivered.
 - [Discovery questions](docs/DISCOVERY.md)
@@ -311,14 +311,14 @@ Copy `.env.example` to `.env` only on your machine if you want the variables set
 
 This repository was built with AI-assisted development.
 
-**What I did (Diego Lescano):**
+**Author (Diego Lescano):**
 - Chose the problem and the scope: which failure to show, what is out of scope, and what the repo must not claim.
 - Set the governance and business-strategy requirements for every case: approval controls, traceability, risks and costs, estimated ROI, rollout and metrics.
 - Set the engineering standards: Python, tests, CI, synthetic data only, no real client or employer data.
 - Reviewed and approved each change before merge, and decided what became public and when.
 
-**What AI coding agents did:**
-- Wrote most of the code, tests and documentation, working from my briefs and under my review.
+**AI coding agents:**
+- Wrote most of the code, tests and documentation, from the author's briefs and under the author's review.
 
 **What this repo does not claim:**
 - It is not a production system, and every data set is synthetic.

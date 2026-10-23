@@ -2,11 +2,11 @@
 
 Narrated recording of a real offline run, with a number trace.
 
-[agents_mcp_evals_workshop_demo_en.mp4](agents_mcp_evals_workshop_demo_en.mp4) is about 106 seconds. The narration is English. The voice is text-to-speech generated with xAI. Subtitles are included in English and Spanish:
+[agents_mcp_evals_workshop_demo_en.mp4](agents_mcp_evals_workshop_demo_en.mp4) is about 106 seconds. The narration is English. The voice is text-to-speech generated with xAI. The video binary was not edited. Subtitle cue files are English. The `.es.srt` name is the original track filename; its cues are the same English lines as the `.en.srt` file.
 
 - [English subtitles](agents_mcp_evals_workshop_demo_en.en.srt)
-- [Spanish subtitles](agents_mcp_evals_workshop_demo_en.es.srt)
-- [Script that was used](guion_final_usado_agents_mcp_evals_workshop_demo_en.md)
+- [English subtitles (original `.es.srt` filename)](agents_mcp_evals_workshop_demo_en.es.srt)
+- [Script that was used](script_used_agents_mcp_evals_workshop_demo_en.md)
 
 The take was recorded on a fresh clone of this repo's main (`2b1209375b8f`, package 0.1.1, Python 3.12.15). It is fully offline: a fake provider, no API key, and no network call. The badge on screen says OFFLINE. Every number on screen or in the narration comes from that run. The map is [evidence_agents_mcp_evals_workshop_demo/number_trace.md](evidence_agents_mcp_evals_workshop_demo/number_trace.md).
 

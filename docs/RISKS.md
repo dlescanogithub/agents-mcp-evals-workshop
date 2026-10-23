@@ -5,7 +5,7 @@ Owners are roles for this teaching repo, not a staffed rota. "Maintainer" is the
 | Risk | Probability | Impact | Mitigation | Owner |
 | --- | --- | --- | --- | --- |
 | A learner pastes a real key into an exercise | Medium for a live class, low in this repo's default path | Secret in git history | Live flag off, `.env` gitignored, secret scan in CI, no vendor client in the exercises | Facilitator |
-| The class treats the fake provider as a model that read the prompt | Medium | They "fix" the guion-independent answer and think the system reasons | Module 1 and the facilitator guide say the script ignores messages. The demo prints `provider: fake` | Facilitator |
+| The class treats the fake provider as a model that read the prompt | Medium | They "fix" the script-independent answer and think the system reasons | Module 1 and the facilitator guide say the script ignores messages. The demo prints `provider: fake` | Facilitator |
 | The phrase detector is used as the control | Medium | A new wording bypasses a filter that was never the control | Module 6 grader fails a write even when the phrase is only quoted. Docs say the detector is a label | Maintainer |
 | The regression command is "fixed" so it exits 0 | Low | CI no longer proves the gate can go red | CI requires exit code 1. A unit test expects that code | Maintainer |
 | The teaching server is deployed as if it were MCP | Low if the docs are read | A client that expects the full spec fails, or a write appears to be in protocol scope | Server exports two read tools. ADR 0003 lists omissions. Legacy `initialize` returns an error that names the supported revision | Maintainer |
