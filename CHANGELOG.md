@@ -2,6 +2,9 @@
 
 ## Unreleased
 
+- Translated the remaining Spanish into English. `docs/HOW_IT_WORKS.md` is an English walkthrough for engineers and buyers. The demo script and the former Spanish subtitle cues are English. The dialect label on the How it works link is gone. The demo video binary was not edited. Docs only.
+- Removed first-person interview framing from the authorship note and from the business-value competency sentence. Docs only.
+
 ## 0.1.2 - 2026-10-22
 
 - Set the package version to 0.1.2 in `pyproject.toml` and `__version__`.

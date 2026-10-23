@@ -4,7 +4,7 @@
 >
 > - **The workshop has not been delivered.** No cohort has sat the two sessions. No buyer has been invoiced. No learner outcome in this file was observed.
 > - **Fictional buyer.** "Taller Bruma" is an invented delivery group, the same one named in [BUSINESS_CASE.md](BUSINESS_CASE.md). It is not an employer and not a client. Cerulean Depot, the shift assistant in the labs, is fictional too.
-> - **Inspired by the AWS Business Value Realization (BVR) framework:** a value-realization plan, KPIs with an exit per stage, and confirmation by the buyer. **It is not an official AWS template** (the official VRP template is not public) and **I do not hold the AWS BVR Competency**, which is awarded to AWS partner companies, not to individuals.
+> - **Inspired by the AWS Business Value Realization (BVR) framework:** a value-realization plan, KPIs with an exit per stage, and confirmation by the buyer. **It is not an official AWS template** (the official VRP template is not public) and **The author does not hold the AWS BVR Competency**, which is awarded to AWS partner companies, not to individuals.
 > - **[BUSINESS_CASE.md](BUSINESS_CASE.md) stops before a dollar return.** It says a money model would need a loaded hourly cost and an incident history, and that inventing those would be a fake case. This file continues anyway, as a planning sketch, and tags every invented input. Do not read it as evidence.
 > - Labels used in this file:
 >   - **MEASURED**: a command was run in this repository and the number is what it printed, with the date, the Python version, and the commit.
